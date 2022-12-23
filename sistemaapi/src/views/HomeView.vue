@@ -51,7 +51,8 @@ export default {
       axios.post('http://api.solodata.es/auth', json).
         then( data => {
           if (data.data.status == "ok") {
-            console.log("ok");
+            localStorage.token = data.data.result.token;
+            this.$router.push('dashboard');
           } else {
             this.error = true;
             this.error_msg = data.data.msg;
@@ -356,6 +357,6 @@ input[type=text]:placeholder {
 }
 
 #icon {
-  width: 60%;
+  width: 40%;
 }
 </style>
